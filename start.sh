@@ -1,4 +1,5 @@
 #!/bin/bash
+#Deps are curl or wget and sudo for debian buster.
 
 user="dockuser"
 
@@ -8,7 +9,7 @@ sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade
 
 sudo apt remove docker docker-engine docker.io containerd runc
 
-sudo apt install \
+sudo apt install -y \
     apt-transport-https \
     ca-certificates \
     curl \
