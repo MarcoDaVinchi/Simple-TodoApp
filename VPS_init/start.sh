@@ -19,7 +19,8 @@ sudo apt install -y \
     gnupg-agent \
     software-properties-common \
     tmux \
-    htop
+    htop \
+    git
 
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 
