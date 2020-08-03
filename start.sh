@@ -1,5 +1,8 @@
 #!/bin/bash
-#Deps are curl or wget and sudo for debian buster.
+#Deps are curl or wget and sudo for debian buster. Install before running this script.
+
+#Change root password!
+passwd
 
 user="dockuser"
 
