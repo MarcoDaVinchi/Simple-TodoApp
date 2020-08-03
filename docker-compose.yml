@@ -8,11 +8,12 @@ networks:
 
 services:
   nginx:
-      build:
-        context: ./client
-      ports:
-        - "${NGINX_HOST_HTTP_PORT}:80"
-        - "${NGINX_HOST_HTTPS_PORT}:443"
-      networks:
-        - frontend
-        - backend
+    build:
+      context: ./client
+    ports:
+      - '${NGINX_HOST_HTTP_PORT}:80'
+      - '${NGINX_HOST_HTTPS_PORT}:443'
+    restart: unless-stopped
+    networks:
+      - frontend
+      - backend
