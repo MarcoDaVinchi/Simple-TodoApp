@@ -1,0 +1,60 @@
+FROM node:latest
+
+ARG USERNAME=vscode
+ARG USER_UID=1001
+ARG USER_GID=1001
+
+ENV SHELL /bin/bash
+
+RUN mkdir /workspace
+
+WORKDIR /workspace
+
+COPY contrib.py .
+
+RUN ["python3", "contrib.py"]
+
+RUN apt-get update -y && apt-get install -y \
+    gnupg2 \
+    apt-transport-https \
+    ca-certificates && \
+    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - && \
+    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
+    echo "deb https://packages.cloud.google.com/apt cloud-sdk main" \
+    | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+
+RUN apt-get update -y && apt-get install -y \
+    fonts-firacode
+
+RUN apt-get update -y && apt-get install -y \
+    google-cloud-sdk \
+    google-cloud-sdk-app-engine-python \
+    google-cloud-sdk-app-engine-python-extras \
+    google-cloud-sdk-cbt \
+    google-cloud-sdk-cloud-build-local \
+    google-cloud-sdk-bigtable-emulator \
+    kubectl && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+    rm /var/log/lastlog /var/log/faillog
+
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
+
+RUN npm install -g @angular/cli
+
+# USER node
+
+# RUN ng new ang --commit=false --interactive=false --routing=true --skipGit=true --style=scss
+
+RUN mkdir -p ~/.vscode-server ~/.vscode-server-insiders
+
+# && chown ${USER_UID}:${USER_GID} /home/$USERNAME/.vscode-server*
+
+# WORKDIR /workspace/ang
+
+# VOLUME [ "/workspace" ]
+
+# ENTRYPOINT ng serve --host 0.0.0.0
+
+CMD bash sleep infinity
