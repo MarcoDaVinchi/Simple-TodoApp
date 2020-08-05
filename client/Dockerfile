@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM nginx:1.19.1
 
 COPY nginx.conf /etc/nginx/
 COPY ./ssl/ /etc/nginx/ssl

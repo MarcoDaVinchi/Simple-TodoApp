@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:14.7.0
 
 ARG USERNAME=vscode
 ARG USER_UID=1001
@@ -7,6 +7,8 @@ ARG USER_GID=1001
 ENV SHELL /bin/bash
 
 RUN mkdir /workspace
+
+RUN mkdir -p ~/.vscode-server ~/.vscode-server-insiders
 
 WORKDIR /workspace
 
@@ -47,8 +49,6 @@ RUN npm install -g @angular/cli
 
 # RUN ng new ang --commit=false --interactive=false --routing=true --skipGit=true --style=scss
 
-RUN mkdir -p ~/.vscode-server ~/.vscode-server-insiders
-
 # && chown ${USER_UID}:${USER_GID} /home/$USERNAME/.vscode-server*
 
 # WORKDIR /workspace/ang
@@ -57,4 +57,4 @@ RUN mkdir -p ~/.vscode-server ~/.vscode-server-insiders
 
 # ENTRYPOINT ng serve --host 0.0.0.0
 
-CMD bash sleep infinity
+CMD ["/bin/bash", "-c", "sleep infinity"]
