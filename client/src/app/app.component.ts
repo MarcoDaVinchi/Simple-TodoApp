@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Task } from "./task";
+import { Task } from './task';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +14,6 @@ export class AppComponent {
     new Task(2, 'learn CSS', 'learn CSS fast!'),
     new Task(3, 'learn JavaScript', 'learn JavaScript fast!'),
     new Task(4, 'learn PHP', 'learn PHP fast!'),
-    new Task(5, 'stay alive!', 'stay alive! fast!'),
+    new Task(5, 'stay alive!', 'stay alive!!! fast'),
   ];
 }
