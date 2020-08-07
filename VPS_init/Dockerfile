@@ -26,7 +26,8 @@ RUN apt-get update -y && apt-get install -y \
     | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 
 RUN apt-get update -y && apt-get install -y \
-    fonts-firacode
+    fonts-firacode \
+    default-jre
 
 RUN apt-get update -y && apt-get install -y \
     google-cloud-sdk \
