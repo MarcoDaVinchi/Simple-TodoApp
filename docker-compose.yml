@@ -10,9 +10,11 @@ services:
   nginx:
     build:
       context: ./client
+    image:
+      'todo_app_swarm:${APP_VERSION}'
     ports:
-      - '${NGINX_HOST_HTTP_PORT}:80'
-      - '${NGINX_HOST_HTTPS_PORT}:443'
+      - '80:80'
+      - '443:443'
     restart: unless-stopped
     networks:
       - frontend

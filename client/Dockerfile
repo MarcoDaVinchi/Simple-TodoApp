@@ -2,14 +2,13 @@ FROM node:14.7.0 as builder
 
 WORKDIR /app
 
-RUN npm install -g @angular/cli
-
 COPY . /app/
 
-RUN yarn install
+RUN npm install -g @angular/cli
 
-RUN ng build --prod
+RUN npm install
 
+RUN ng build --prod --output-path dist
 
 FROM nginx:1.19.1
 
