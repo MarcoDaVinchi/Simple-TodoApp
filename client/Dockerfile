@@ -6,7 +6,7 @@ COPY . /app/
 
 RUN npm install -g @angular/cli
 
-RUN npm install
+RUN yarn install
 
 RUN ng build --prod --output-path dist
 
