@@ -10,7 +10,7 @@ RUN yarn install
 
 COPY . /app/
 
-RUN yarn build -- --prod --output-path=dist
+RUN yarn build --prod --output-path=dist
 
 FROM nginx:1.19.1
 
