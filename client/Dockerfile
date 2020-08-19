@@ -4,11 +4,13 @@ WORKDIR /app
 
 COPY package*.json /app/
 
-RUN npm install
+COPY yarn*.lock /app/
+
+RUN yarn install
 
 COPY . /app/
 
-RUN npm run build -- --prod --output-path=dist
+RUN yarn build --prod --output-path=dist
 
 FROM nginx:1.19.1
 
