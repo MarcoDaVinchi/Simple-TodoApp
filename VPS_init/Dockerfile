@@ -44,7 +44,7 @@ RUN apt-get update -y && apt-get install -y \
 RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
 
-RUN npm install -g @angular/cli
+# RUN npm install -g @angular/cli
 
 # USER node
 
