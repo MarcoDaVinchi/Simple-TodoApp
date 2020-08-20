@@ -1,10 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'normalize.css';
+$main-font-size: 2vh;
 
 body {
   font-family: "Tahoma", sans-serif;
-  font-size: 18px;
-  line-height: 25px;
+  font-size: $main-font-size;
+  line-height: 0.7vh;
   color: #164a44;
 
   // background-color: #b2d9d0;

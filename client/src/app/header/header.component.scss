@@ -1,0 +1,15 @@
+.toolbar-row {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    white-space: nowrap;
+}
+
+.toolbar-icons-container{
+    display:flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    height: 100%;
+}
