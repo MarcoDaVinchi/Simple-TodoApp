@@ -5,6 +5,9 @@
     align-items: center;
     justify-content: flex-end;
     white-space: nowrap;
+    margin: 0 auto;
+    padding: 1.5vh 1vw;
+    background-color: #1976D2;
 }
 
 .toolbar-icons-container{
@@ -12,4 +15,9 @@
     flex-direction: row;
     flex-shrink: 0;
     height: 100%;
+    & svg{
+        color:white;
+        overflow:hidden;
+        fill:currentColor;
+    }
 }
