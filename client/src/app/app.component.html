@@ -7,7 +7,7 @@
   <p *ngIf="tasks.length == 0">You have no tasks!</p>
 
   <ul class="tasks__list">
-    <li *ngFor="let task of tasks" class="tasks__item">
+    <li *ngFor="let task of tasks" class="tasks__item" draggable="true">
       <h2>
         {{ task.taskName }}
       </h2>

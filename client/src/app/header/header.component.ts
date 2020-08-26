@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  githubLogoUrl = '../assets/img/github_png.png';
   githubRepoUrl = 'https://github.com/MarcoDaVinchi/Simple-TodoApp';
 
   constructor() {}
