@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Task } from './task';
+import { Todo } from './todo';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +8,11 @@ import { Task } from './task';
 })
 export class AppComponent {
   title = 'Simple ToDo app';
-  clickMessage = '123';
-  // tasks = [];
   tasks = [
-    new Task(1, 'learn HTML', 'learn HTML!'),
-    new Task(2, 'learn CSS', 'learn CSS!'),
-    new Task(3, 'learn JavaScript', 'learn JavaScript!'),
-    new Task(4, 'learn PHP', 'learn PHP!'),
-    new Task(5, 'stay alive!', 'stay alive!!!'),
+    new Todo(1, 'learn HTML', false),
+    new Todo(2, 'learn CSS', false),
+    new Todo(3, 'learn JavaScript', false),
+    new Todo(4, 'learn PHP', false),
+    new Todo(5, 'stay alive!', false),
   ];
 }
