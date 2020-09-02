@@ -24,7 +24,7 @@ export class TodoDataService {
   }
 
   updateTodoById(id: number, title: string, complete: boolean): Todo {
-    let todo = this.getTodoById(id);
+    const todo = this.getTodoById(id);
     if (!todo) {
       return null;
     }
