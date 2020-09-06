@@ -1,3 +1,4 @@
+#!/bin/bash
 swapon -s
 
 cd /var

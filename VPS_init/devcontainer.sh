@@ -1,6 +1,7 @@
+#!/bin/bash
 mkdir -p ~/.vscode-server ~/.vscode-server-insiders
 
-python3 contrib.py
+python3 ./contrib.py
 
 apt-get update -y && apt-get install -y \
     gnupg2 \

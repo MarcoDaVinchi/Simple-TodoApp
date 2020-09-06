@@ -16,7 +16,7 @@ COPY devcontainer.sh .
 
 COPY contrib.py .
 
-RUN ./devcontainer.sh
+RUN /bin/bash ./devcontainer.sh
 
 # RUN ["python3", "contrib.py"]
 

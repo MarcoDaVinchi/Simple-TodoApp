@@ -7,7 +7,7 @@ networks:
     driver: ${NETWORKS_DRIVER}
 
 services:
-  nginx:
+  web:
     build:
       context: ./client
     image: 'todo_app_swarm:${APP_VERSION}'
@@ -22,3 +22,11 @@ services:
     restart: unless-stopped
     networks:
       - frontend
+
+  nest:
+    build:
+      context: ./server
+    image: 'todo_app_swarm_back:${APP_VERSION}'
+    networks:
+      - frontend
+      - backend
