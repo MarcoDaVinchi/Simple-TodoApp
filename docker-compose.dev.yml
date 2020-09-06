@@ -1,0 +1,34 @@
+version: '3'
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+services:
+  web:
+    build:
+      context: ./VPS_init
+      dockerfile: Dockerfile.front
+    image: 'todo_app_swarm:dev-${APP_VERSION}'
+    ports:
+      - 4200:4200
+    volumes:
+      - 'extensions:/root/.vscode-server'
+      - 'src:/app'
+
+  nest:
+    build:
+      context: ./VPS_init
+      dockerfile: Dockerfile.back
+    image: 'todo_app_swarm_back:dev-${APP_VERSION}'
+    volumes:
+      - 'extensions:/root/.vscode-server'
+      - 'src:/app'
+    ports:
+      - 3000:3000
+
+volumes:
+  extensions:
+  src:
