@@ -24,11 +24,12 @@ services:
       dockerfile: Dockerfile.back
     image: 'todo_app_swarm_back:dev-${APP_VERSION}'
     volumes:
-      - 'extensions:/root/.vscode-server'
+      - 'extensions_nest:/root/.vscode-server'
       - 'src:/app'
     ports:
       - 3000:3000
 
 volumes:
   extensions:
+  extensions_nest:
   src:

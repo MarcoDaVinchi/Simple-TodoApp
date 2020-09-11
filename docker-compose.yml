@@ -22,11 +22,16 @@ services:
     restart: unless-stopped
     networks:
       - frontend
+    depends_on:
+      - nest
 
   nest:
     build:
       context: ./server
     image: 'todo_app_swarm_back:${APP_VERSION}'
+    ports:
+      - 3000:3000
+    restart: unless-stopped
     networks:
       - frontend
       - backend
