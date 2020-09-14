@@ -13,7 +13,7 @@ services:
       dockerfile: Dockerfile.front
     image: 'todo_app_swarm_web:dev-${APP_VERSION}'
     ports:
-      - 4200:4200
+      - '4200:4200'
     volumes:
       - 'extensions:/root/.vscode-server'
       - 'src:/app'
@@ -27,7 +27,7 @@ services:
       - 'extensions_nest:/root/.vscode-server'
       - 'src:/app'
     ports:
-      - 3000:3000
+      - '3000:3000'
 
 volumes:
   extensions:
