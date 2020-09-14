@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError, concat, of } from 'rxjs';
 import { catchError, retry, map } from 'rxjs/operators';
 import { Todo } from './todo';
 
@@ -12,10 +12,15 @@ const API_URL = environment.apiUrl;
 })
 export class ApiService {
   constructor(private http: HttpClient) {}
-
   //API: GET /todos
-  public getAllTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(API_URL + '/todos');
+  public getAllTodos() {
+    return this.http.get<Todo[]>(API_URL + '/todos').pipe(
+      map((res) => {
+        return res.map((todo) => new Todo(todo.id, todo.title, todo.complete));
+      }),
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   //API: POST /todos
@@ -29,4 +34,15 @@ export class ApiService {
 
   // API: DELETE /todos/:id
   public deleteTodoById(todoId: number) {}
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}.` + `body was: ${error.error}`
+      );
+    }
+    return throwError('SOmething bad happened: please try again later.');
+  }
 }
