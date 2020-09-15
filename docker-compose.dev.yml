@@ -26,8 +26,6 @@ services:
     volumes:
       - 'extensions_nest:/root/.vscode-server'
       - 'src:/app'
-    ports:
-      - '3000:3000'
 
 volumes:
   extensions:
