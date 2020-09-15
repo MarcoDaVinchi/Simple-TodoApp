@@ -1,1 +1,1 @@
-GET http://localhost:3000
+GET http://nest:3000/todos

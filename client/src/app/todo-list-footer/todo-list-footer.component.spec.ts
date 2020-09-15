@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Todo } from '../todo';
 
 import { TodoListFooterComponent } from './todo-list-footer.component';
 
@@ -8,14 +9,14 @@ describe('TodoListFooterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TodoListFooterComponent ]
-    })
-    .compileComponents();
+      declarations: [TodoListFooterComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TodoListFooterComponent);
     component = fixture.componentInstance;
+    component.todos = [new Todo(1, 'Test', false)];
     fixture.detectChanges();
   });
 
