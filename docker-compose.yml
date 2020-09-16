@@ -10,7 +10,7 @@ services:
   web:
     build:
       context: ./client
-    image: 'todo_app_swarm:${APP_VERSION}'
+    image: 'todo_app_swarm_web:${APP_VERSION}'
     deploy:
       replicas: 3
       update_config:

@@ -12,6 +12,8 @@ services:
       context: ./VPS_init
       dockerfile: Dockerfile.front
     image: 'todo_app_swarm_web:dev-${APP_VERSION}'
+    deploy:
+      replicas: 1
     ports:
       - 4200:4200
     volumes:

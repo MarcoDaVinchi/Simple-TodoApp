@@ -1,4 +1,4 @@
-GET http://localhost:3000/todos/1
+GET http://localhost:3000/todos/4
 
 ###
 
@@ -7,7 +7,6 @@ GET http://localhost:3000/todos
 ###
 
 POST http://localhost:3000/todos
-
 Content-Type: application/json
 
 {
