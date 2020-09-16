@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { Observable, of } from 'rxjs';
 import { Todo } from '../todo';
+import { CreateTodosDto } from '../create-todos.dto';
 
 const todosMock: Todo[] = [
   {
@@ -27,13 +28,13 @@ export class TodosController {
   }
 
   @Get(':id')
-  findOne(@Param() params): Observable<Todo> {
-    return of(todosMock[params.id-1]);
+  findOne(@Param('id', ParseIntPipe) id: number): Observable<Todo> {
+    return of(todosMock[id - 1]);
   }
 
   @Post()
-  async create(@Body() todo:Todo) {
+  async create(@Body() todo: CreateTodosDto) {
     todosMock.push(todo);
-    return of(todosMock);
+    return of(todo);
   }
 }
