@@ -69,7 +69,7 @@ export class ApiService {
 
   // API: DELETE /todos/:id
   public deleteTodoById(todoId: number): Observable<null> {
-    return this.http.delete(`${API_URL}/todos${todoId}`).pipe(
+    return this.http.delete(`${API_URL}/todos/${todoId}`).pipe(
       map((res) => null),
       catchError(this.handleError)
     );

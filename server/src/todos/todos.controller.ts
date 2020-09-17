@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post, Delete } from '@nestjs/common';
 import { Observable, of } from 'rxjs';
 import { Todo } from '../todo';
 import { CreateTodosDto } from '../create-todos.dto';
@@ -36,5 +36,10 @@ export class TodosController {
   async create(@Body() todo: CreateTodosDto) {
     todosMock.push(todo);
     return of(todo);
+  }
+
+  @Delete(':id')
+  remove(@Param('id', ParseIntPipe) id: number) {
+    todosMock.splice(todosMock.findIndex(todo => todo.id === id), 1);
   }
 }
