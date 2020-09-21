@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  SimpleChanges,
+} from '@angular/core';
 import { Todo } from '../todo';
 
 @Component({
@@ -17,8 +24,11 @@ export class TodoListItemComponent implements OnInit {
 
   constructor() {}
 
+  todoCompleted: string;
+
   toggleTodoComplete(todo: Todo): void {
     this.toggleComplete.emit(todo);
+    this.todoCompleted = this.todoCompleted ? '' : 'completed';
   }
   removeTodo(todo: Todo): void {
     this.remove.emit(todo);
