@@ -7,15 +7,6 @@ button {
   position: absolute;
   z-index: -10;
   opacity: 0;
-  // text-align: center;
-  // width: 40px;
-  /* auto, since non-WebKit browsers doesn't support input styling */
-  // height: auto;
-  // top: 0;
-  // bottom: 0;
-  // margin: auto 0;
-  // border: none; /* Mobile Safari */
-  //   appearance: none;
   + label {
     display: inline-flex;
     align-items: center;

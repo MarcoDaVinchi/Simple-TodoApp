@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post, Delete } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  ParseIntPipe,
+  Post,
+  Delete,
+  Put,
+} from '@nestjs/common';
 import { Observable, of } from 'rxjs';
 import { Todo } from '../todo';
 import { CreateTodosDto } from '../create-todos.dto';
@@ -6,7 +15,7 @@ import { CreateTodosDto } from '../create-todos.dto';
 const todosMock: Todo[] = [
   {
     id: 1,
-    title: 'Read SitePoint article',
+    title: 'Read good books',
     complete: false,
   },
   {
@@ -16,7 +25,7 @@ const todosMock: Todo[] = [
   },
   {
     id: 3,
-    title: 'Make restaurant reservation',
+    title: 'Make something to eat',
     complete: false,
   },
 ];
@@ -38,8 +47,20 @@ export class TodosController {
     return of(todo);
   }
 
+  @Put(':id')
+  update(@Body() todo: CreateTodosDto, @Param('id', ParseIntPipe) id: number) {
+    todosMock.splice(
+      todosMock.findIndex(todoToUpdate => todoToUpdate.id === id),
+      1,
+      todo,
+    );
+  }
+
   @Delete(':id')
   remove(@Param('id', ParseIntPipe) id: number) {
-    todosMock.splice(todosMock.findIndex(todo => todo.id === id), 1);
+    todosMock.splice(
+      todosMock.findIndex(todo => todo.id === id),
+      1,
+    );
   }
 }
