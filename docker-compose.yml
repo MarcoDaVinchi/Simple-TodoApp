@@ -29,8 +29,13 @@ services:
     build:
       context: ./server
     image: 'todo_app_swarm_back:${APP_VERSION}'
+    deploy:
+      replicas: 3
+      update_config:
+        parallelism: 2
+        delay: 10s
     ports:
-      - 3000:3000
+      - '${NEST_LISTEN_PORT}:3000'
     restart: unless-stopped
     networks:
       - frontend

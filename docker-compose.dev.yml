@@ -25,6 +25,8 @@ services:
       context: ./VPS_init
       dockerfile: Dockerfile.back
     image: 'todo_app_swarm_back:dev-${APP_VERSION}'
+    deploy:
+      replicas: 1
     volumes:
       - 'extensions_nest:/root/.vscode-server'
       - 'src:/app'
