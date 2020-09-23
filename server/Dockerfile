@@ -1,19 +1,32 @@
-FROM node:14.7.0
+FROM node:14.7.0 as builder
 
 WORKDIR /app
+
+COPY . /app/
+
+RUN yarn install
+
+RUN yarn build
+
+
+FROM node:14.7.0
+
+ENV NODE_ENV=production
+
+COPY --from=builder /app/dist /app/dist
 
 COPY package*.json /app/
 
 COPY yarn*.lock /app/
 
-RUN yarn install
+COPY .yarnrc /app/
 
-COPY . /app/
+COPY ./.yarn/ /app/.yarn/
 
-RUN yarn build
+WORKDIR /app
 
-ENV NODE_ENV=production
+RUN yarn install --prod
 
 EXPOSE 3000
 
-CMD ["yarn", "start:prod"]
+CMD [ "yarn", "start:prod" ]

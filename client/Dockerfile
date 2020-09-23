@@ -6,6 +6,10 @@ COPY package*.json /app/
 
 COPY yarn*.lock /app/
 
+COPY .yarnrc /app/
+
+COPY ./.yarn/ /app/.yarn/
+
 RUN yarn install
 
 COPY . /app/
