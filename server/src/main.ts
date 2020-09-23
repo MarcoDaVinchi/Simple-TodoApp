@@ -6,7 +6,12 @@ import * as helmet from 'helmet';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  const allowedOrigins = ['http://localhost', 'http://localhost:3000', '*'];
+  const allowedOrigins = [
+    'http://localhost',
+    'https://localhost',
+    'http://localhost:3000',
+    '*',
+  ];
 
   const cors = {
     origin: allowedOrigins,
