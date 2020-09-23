@@ -10,6 +10,7 @@ async function bootstrap() {
     'http://localhost',
     'https://localhost',
     'http://localhost:3000',
+    'https://magulaev.site',
     '*',
   ];
 
