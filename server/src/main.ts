@@ -10,7 +10,6 @@ async function bootstrap() {
     'http://localhost:3000',
     'https://localhost:3000',
     'https://magulaev.site',
-    '*',
   ];
 
   const cors = {
@@ -19,7 +18,7 @@ async function bootstrap() {
     preflightContinue: false,
     optionsSuccessStatus: 200,
     credentials: true,
-    allowedHeaders: ['Accept', 'Content-Type', 'Authorization'],
+    allowedHeaders: ['Accept', 'Content-Type', 'Authorization', 'Origin', 'X-Auth-Token'],
   };
 
   const app = await NestFactory.create(AppModule, { cors: true });
