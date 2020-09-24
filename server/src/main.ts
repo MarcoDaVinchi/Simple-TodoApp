@@ -12,19 +12,27 @@ async function bootstrap() {
     'https://magulaev.site',
   ];
 
-  const cors = {
+  const corsOptions = {
     origin: allowedOrigins,
     methods: 'GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS',
     preflightContinue: false,
     optionsSuccessStatus: 200,
     credentials: true,
-    allowedHeaders: ['Accept', 'Content-Type', 'Authorization', 'Origin', 'X-Auth-Token'],
+    allowedHeaders: [
+      'Accept',
+      'Content-Type',
+      'Authorization',
+      'Origin',
+      'X-Auth-Token',
+    ],
   };
 
-  const app = await NestFactory.create(AppModule, { cors: true });
+  const app = await NestFactory.create(AppModule, {
+    cors: corsOptions,
+  });
 
   app.use(helmet());
-  app.enableCors(cors);
+  // app.enableCors(corsOptions);
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(3000);
 }
