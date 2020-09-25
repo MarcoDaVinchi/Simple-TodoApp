@@ -2,7 +2,7 @@ GET http://localhost:3000/todos/4
 
 ###
 
-GET http://localhost:3000/todos
+GET https://magulaev.site/
 
 ###
 

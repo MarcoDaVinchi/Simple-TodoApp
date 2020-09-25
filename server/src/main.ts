@@ -10,6 +10,9 @@ async function bootstrap() {
     'http://localhost:3000',
     'https://localhost:3000',
     'https://magulaev.site',
+    'http://magulaev.site',
+    'http://nest:3000',
+    'https://nest:3000',
   ];
 
   const corsOptions = {
@@ -27,12 +30,10 @@ async function bootstrap() {
     ],
   };
 
-  const app = await NestFactory.create(AppModule, {
-    cors: corsOptions,
-  });
+  const app = await NestFactory.create(AppModule);
 
   app.use(helmet());
-  // app.enableCors(corsOptions);
+  app.enableCors(corsOptions);
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(3000);
 }
