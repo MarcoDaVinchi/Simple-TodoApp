@@ -13,6 +13,6 @@ Made for educational and Proof of Knowledge purposes.
 
 ## TBD section
 
-- Nest.JS backend container.
+- ~~Nest.JS backend container.~~ Done!
 - PGSql database container for users.
 - Continue to customize the Angular frontend part ( mobile, adaptive and so on..).
